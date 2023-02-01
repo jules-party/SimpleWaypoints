@@ -22,17 +22,17 @@ public class TPUtils {
             double z=location.getZ();
 
             /*if the player is inside a veichle, move the veichle*/
-            Entity veichle=player.getVehicle();
+            Entity vehicle=player.getVehicle();
             location=new Location(player.getWorld(),x,y+1,z);
 
-            veichle.eject();//eject the player from the veichle
+            vehicle.eject();//eject the player from the veichle
 
             //teleport the player and the veichle
-            veichle.teleport(location);
+            vehicle.teleport(location);
             player.teleport(location);
 
             //put the player on the veichle
-            veichle.addPassenger(player);
+            vehicle.addPassenger(player);
         }
         else {
             player.teleport(location);

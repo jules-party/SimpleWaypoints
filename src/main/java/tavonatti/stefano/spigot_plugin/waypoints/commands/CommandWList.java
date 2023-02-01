@@ -1,5 +1,6 @@
 package tavonatti.stefano.spigot_plugin.waypoints.commands;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.Command;
@@ -22,31 +23,28 @@ public class CommandWList implements CommandExecutor{
                 return true;
             }
 
-            System.out.println("waypoints/" + player.getName() + "-" +
-                    player.getWorld().getName() + ".properties");
-
-            //load file
-            File waypointFile = new File("waypoints/" + player.getName() + "-" +
-                    player.getWorld().getName() + ".properties");
-
             Properties properties = new Properties();
 
-            if (CommandWSave.loadWaypointFile(waypointFile, properties)) return true;
+            for(World world : Bukkit.getWorlds()) {
+                System.out.println("waypoints/" + player.getName() + "-" +
+                        world.getName() + ".properties");
+
+                //load file
+                File waypointFile = new File("waypoints/" + player.getName() + "-" +
+                        world.getName() + ".properties");
+
+
+                if (CommandWSave.loadWaypointFile(waypointFile, properties)) return true;
+            }
 
             Iterator it=properties.keySet().iterator();
             String message="Waypoints:\n";
 
-            ChatColor chatColor=ChatColor.BLUE;
-
-            if(player.getWorld().getEnvironment()== World.Environment.NETHER){
-                chatColor=ChatColor.RED;
-            }else if(player.getWorld().getEnvironment()== World.Environment.THE_END){
-                chatColor=ChatColor.AQUA;
-            }
+            ChatColor chatColor=ChatColor.GREEN;
 
             while (it.hasNext()){
                 String temp=it.next().toString();
-                message+=""+ chatColor+temp+" "+ChatColor.WHITE+properties.getProperty(temp)+"\n";
+                message+=""+ chatColor+temp+ChatColor.BLUE+": "+ChatColor.WHITE+properties.getProperty(temp)+"\n";
             }
             player.sendMessage(message);
         }

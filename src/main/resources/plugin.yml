@@ -1,7 +1,7 @@
 name: SimpleWaypoints
 version: 0.3-tabbed
 api-version: 1.14
-author: Stefano Tavonatti; DKolibar
+author: Stefano Tavonatti; DKolibar; jules-party
 main: tavonatti.stefano.spigot_plugin.waypoints.Main
 commands:
   wsave:
@@ -16,6 +16,3 @@ commands:
   wdelete:
     description: delete a waypoint
     usage: /wdelete
-  whome:
-    description: teleport to spawn location
-    usage: /whome
