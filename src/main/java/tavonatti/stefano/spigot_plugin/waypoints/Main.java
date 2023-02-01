@@ -22,8 +22,6 @@ public class Main extends JavaPlugin{
 
         this.getCommand("wdelete").setExecutor(new CommandWDelete());
         this.getCommand("wdelete").setTabCompleter(new CommandCompleter()); //registering tab completer for /wdelete
-
-        this.getCommand("whome").setExecutor(new CommandWHome());
     }
 
     private void createWaypointsDir() {

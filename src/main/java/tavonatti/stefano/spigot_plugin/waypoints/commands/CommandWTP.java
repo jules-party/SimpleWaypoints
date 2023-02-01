@@ -47,7 +47,8 @@ public class CommandWTP implements CommandExecutor {
                 return true;
             }
 
-            String waypointString[]=properties.getProperty(strings[0]).split(" ");
+            String waypointName = properties.getProperty(strings[0]);
+            String[] waypointString = properties.getProperty(strings[0]).split(" ");
 
             double x,y,z;
 
@@ -58,7 +59,7 @@ public class CommandWTP implements CommandExecutor {
             Location location=new Location(player.getWorld(),x,y,z);
 
             TPUtils.teleportPlayer(player,location);
-
+            player.sendMessage("["+ChatColor.GREEN+"SimpleWP"+ChatColor.RESET+"] Teleported to: "+waypointName);
         }
 
         return true;

@@ -1,5 +1,6 @@
 package tavonatti.stefano.spigot_plugin.waypoints.utils;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
@@ -36,8 +37,5 @@ public class TPUtils {
         else {
             player.teleport(location);
         }
-        player.spawnParticle(Particle.END_ROD,location,500);
-        player.playSound(location, Sound.ENTITY_ENDERMAN_TELEPORT,1,1);
-
     }
 }
